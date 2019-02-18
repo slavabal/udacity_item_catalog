@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <h1>Categories</h1>
+        {% for categorie in categories %}
+            <ul>
+                <li>{{categorie.name}} ({{categorie.id}})</li>
+            </ul>
+        {% endfor %}
+        {% if categories|count==0 %}
+            <i>No Categories available</i>
+        {% endif %}
+        <h1>{{currentCategory.name}} Items ({{items|count}} items)</h1>
+        {% for item in items %}
+            <ul>
+                <li>{{item.title}} ({{item.id}})</li>
+            </ul>
+        {% endfor %}
+        {% if items|count==0 %}
+            <i>No Items available</i>
+        {% endif %}
+    </body>
+</html>

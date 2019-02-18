@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">New Item</div>
+                <form action="{{ url_for('newItem')}}" method = 'post'>
+                <div class="panel-body">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="newitem">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" rows="5" name="description" id="description" placeholder="item description"></textarea>
+                    <label for="category">Category:</label>
+                    <select class="form-control" id="category" name="category">
+                        {% for category in categories %}
+                        <option value="{{category.id}}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-danger" id="submit" value="Create">
+                            <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Create</button>
+                            <a href="{{url_for('showCatalog')}}" class="btn btn-info" role="button">No, I have enough items</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>              
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">Item: {{item.title}}</div>
+                <div class="panel-body">
+                        <p>
+                            Description: {{item.description}}
+                            {% if item.description=="" %}
+                                <span>not available</span>
+                            {% endif %}
+                        </p>
+                </div>
+                <div class="panel-footer">
+                    <a href="{{url_for('editItem', item = item.title)}}" class="btn btn-info" role="button">Edit</a>
+                    <a href="{{url_for('deleteItem', item = item.title)}}" class="btn btn-info" role="button">Delete</a>
+                    <a href="{{url_for('showCatalog')}}" class="btn btn-info" role="button">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>              
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 " >
+            <div class="panel panel-default">
+                <div class="panel-heading">Categories</div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        {% for categorie in categories %}
+                            <a href="{{url_for('getCategoryItems', category=categorie.name)}}" class="list-group-item">{{categorie.name}}</a>
+                        {% endfor %}
+                    </div> 
+                    {% if categories|count==0 %}
+                        <span>No Categories available</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">Latest Items</div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        {% for item in items %}
+                        <a href="{{url_for('getCategoryItem', category=item.category_name, item=item.title)}}" class="list-group-item">{{item.title}} <span class="label label-default">{{item.category_name}}</span></a>
+                        {% endfor %}
+                    </div> 
+                    {% if items|count==0 %}
+                        <i>No Items available</i>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>              
+{% endblock %}
+      
